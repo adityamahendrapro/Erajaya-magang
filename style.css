@@ -1,0 +1,827 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: Poppins;
+    margin: 0;
+    color: #eee;
+}
+
+header {
+    display: block; /* Ganti dari inline ke block untuk memastikan perilaku block yang sesuai */;
+}
+
+nav {
+    padding-inline: 40px;
+    top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+    background-color: rgb(211, 211, 211, 0.7);
+    border-radius: 40px;
+    height: 70px;
+    z-index: 10000;
+    position: fixed;
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: calc(100% - 160px); 
+}
+
+
+nav ul {
+    display: flex;
+    gap: 4rem;
+}
+
+nav li {
+    list-style-type: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 20px;
+}
+
+.judul{
+    margin-right: 0px;
+    font-size: 1.7rem;
+}
+
+.Lol{
+    background-color: #FFC73C;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 20px;
+    color: white;
+    opacity: 1;
+}
+.Lol:hover{
+    background-color: rgb(238, 115, 9);
+}
+
+nav a:not(.judul,.Lol):hover{
+    background-color: rgb(238, 238, 238);
+
+}
+
+.logo {
+    position: relative;
+    width: 200px;
+    height: auto;
+    top: 0.3rem;
+    right: 3rem;
+}
+
+/* css slider */
+.slider{
+    height: 100vh;
+    position: relative;
+}
+.slider .list .item{
+    position: absolute;
+    inset: 0 0 0 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: .5s;
+}
+.slider .list .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.slider .list .item::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(
+        to top, #00D1FF 1%, transparent 30%
+    );
+}
+.slider .list .item .content{
+    position: absolute;
+    left: 10%;
+    top: 20%;
+    width: 500px;
+    max-width: 80%;
+    z-index: 1;
+}
+.slider .list .item .content p:nth-child(1){
+    text-transform: uppercase;
+    letter-spacing: 10px;
+}
+.slider .list .item .content h2{
+    font-size: 100px;
+    margin: 0;
+}
+.slider .list .item.active{
+    opacity: 1;
+    z-index: 10;
+}
+@keyframes showContent {
+    to{
+        transform: translateY(0);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+.slider .list .item.active p:nth-child(1),
+.slider .list .item.active h2,
+.slider .list .item.active p:nth-child(3){
+    transform: translateY(30px);
+    filter: blur(20px);
+    opacity: 0;
+    animation: showContent .5s .7s ease-in-out 1 forwards;
+}
+.slider .list .item.active h2{
+    animation-delay: 1s;
+}
+.slider .list .item.active p:nth-child(3){
+    animation-duration: 1.3s;
+}
+
+.thumbnail{
+    display: flex;
+    position: absolute;
+    bottom: 50px;
+    z-index: 11;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    height: 250px;
+    padding: 0 50px;
+    box-sizing: border-box;
+    overflow: auto;
+    justify-content: s;
+}
+.thumbnail::-webkit-scrollbar{
+    width: 0;
+}
+.thumbnail .item{
+    width: 150px;
+    height: 220px;
+    filter: brightness(0.8);
+    transition: .5s;
+    flex-shrink: 0;
+}
+.thumbnail .item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 5); /* Bayangan putih dengan sedikit transparansi */
+}
+.thumbnail .item.active{
+    filter: brightness(1);
+}
+.thumbnail .item .content{
+    position: absolute;
+    inset: auto 10px 10px 10px;
+}
+
+.thumbnail img{
+    position: relative;
+    width: 30rem;
+    height: 11rem;
+}
+
+.swipe{
+    position: relative;
+    display: flex;
+    gap: 2rem;
+    margin-left: 20rem;
+}
+
+.ttg{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.ttg a{
+    padding: 0.5rem;
+    background-color: #FFC73C;
+    border-radius: 50px;
+    width: 10rem;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+.ttg a:hover{
+    background-color: #FF9A3C;
+}
+
+@media screen and (max-width: 678px) {
+    .thumbnail{
+        justify-content: start;
+    }
+    .slider .list .item .content h2{
+        font-size: 60px;
+    }
+    .arrows{
+        top: 10%;
+    }
+}
+
+.pprogram{
+    position: relative;
+    height: 50rem;
+    background-color: #ffffff;
+    display: flex; /* Menjadikan pprogram sebagai flex container */
+    align-items: center; /* Memusatkan secara vertikal */
+    justify-content: center;
+    background-image: linear-gradient(rgba(0, 208, 255, 0.936), rgba(0, 208, 255, 0.957)), url(image/img4.jpeg);
+    background-position: right center; 
+}
+
+
+.el1{
+    position:relative;
+    width: 70rem; /* Contoh: mengatur lebar el1 menjadi 50% dari pprogram */
+    height: 35rem; /* Contoh: mengatur tinggi el1 menjadi 50% dari tinggi pprogram */
+    padding: 20px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    bottom: 4rem;
+
+}
+
+.foto{
+    width: 35rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foto img {
+    border-radius: 50%; /* Membuat gambar menjadi bulat */
+    width: 400px;  /* Mengatur lebar gambar */
+    height: 400px; /* Mengatur tinggi gambar agar sesuai dan membentuk lingkaran sempurna */
+    object-fit: cover; /* Menjaga rasio aspek gambar, mengisi area tanpa memotong */
+    object-position: center right;
+}
+
+
+.text{
+    width: 35rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.text h1{
+    padding-left: 20px;
+    font-size: 1.8rem;
+    margin-bottom: 0;
+    margin-top: 50px;
+    color:#fff;
+}
+
+.text h2{
+    padding-left: 20px;
+    font-size: 1rem;
+    color: #fff;
+    font-weight: lighter;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.text a{
+    display: flex;
+    justify-content: center;
+    margin-left: 20px;
+    width: 150px;
+    color: white;
+    background-color: #FFC73C;
+    border-radius: 30px;
+    padding: 10px;
+    font-family: "roboto slab";
+    cursor: pointer;
+
+}
+
+.text a:hover{
+    background-color: rgb(238, 115, 9);
+}
+
+.timeline {
+    position: relative;
+    width: 50px; 
+    padding: 20px 0;
+    margin-left: 7px;
+}
+
+.timeline-item {
+    position: relative;
+    width: 50px;
+    height: 100px; /* Tinggi setiap item */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(to bottom, #fff 50%, rgba(255, 255, 255, 0) 50%);
+    background-size: 100% 10px;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: white; 
+    border: 3px solid white; 
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.timeline2{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    bottom: -55px;
+    gap: 1.7rem;
+}
+
+.timeline2 h3, h4, h5{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.timeline2 h4{
+    color: #FFC73C;
+}
+
+.timeline2 h3, h5{
+    color:white
+}
+
+.text2 {
+    display: flex;
+    position: relative;
+    bottom: 2rem;
+}
+
+.text2 h2{
+    margin-top: none;
+}
+
+.kata1{
+    display: flex;
+    flex-direction: column;
+}
+
+h6{
+    margin-bottom: 0;
+    margin-top:40px;
+    margin-left: 20px;
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+
+
+.pberita {
+    position: relative;
+    height: 50rem;
+    background-color: rgb(255, 255, 255); /* Background color putih */
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    overflow: hidden; /* Agar elemen ::before tidak keluar dari container */
+    background-position: bottom;;
+}
+
+.pberita::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(image/img9.jpeg);
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1; /* Mengurangi opacity gambar */
+    filter: grayscale(100%); /* Mengubah gambar menjadi hitam abu-abu */
+    z-index: 1; /* Mengatur layer gambar sebelum konten */
+}
+
+.pberita > * {
+    position: relative;
+    z-index: 2; /* Konten berada di atas layer gambar */
+}
+
+.berita1{
+    width: 50rem;
+}
+
+.berita1 h1{
+    margin-left: 2rem;
+    color: black;
+}
+
+.berita2{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 50rem;
+    padding: 20px;
+    gap: 2.1rem;
+    top: 4.5rem;
+}
+.el2{
+    position:relative;
+    width: 70rem; 
+    height: 35rem; 
+    padding: 20px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    display: flex;
+}
+
+.card {
+    position: relative;
+    width: 30rem; 
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px auto;
+    height: 30rem;
+}
+
+.card-img {
+    width: 100%; 
+    height: 100%; 
+    display: block;
+    object-fit: cover;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%; 
+    background: linear-gradient(to top, rgb(0, 208, 255), rgba(0, 209, 255, 0)); 
+    color: white;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.card-title {
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.card-time {
+    font-size: 0.9rem;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.news-section {
+    max-width: 400px; 
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card {
+    display: flex;
+    border-radius: 10px;
+    height: 110px !important;
+    flex-shrink: 0;
+    position: relative; 
+}
+
+.news-img {
+    width: 150px; 
+    height: 100%; 
+    object-fit: cover; 
+    flex-shrink: 0;
+    border-radius: 10px;
+}
+
+.news-content {
+    padding: 15px;
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1; 
+}
+
+.news-title {
+    font-size: 1rem;
+    margin: 0;
+    line-height: 1.2;
+    color: #333;
+}
+
+.news-time {
+    font-size: 0.8rem;
+    margin-top: 10px;
+    color: #777;
+}
+
+.news-button {
+    background-color: #00D1FF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.news-button:hover {
+    background-color:#FFC73C;
+}
+
+
+
+.card-img, .news-img {
+    object-fit: cover;
+    transition: transform 0.3s ease; 
+}
+
+
+.card:hover .card-img, .news-card:hover .news-img {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+.news-card:hover .news-title {
+    color: #00D1FF; 
+    transition: color 0.3s ease; 
+}
+
+.card:hover .card-title{
+    color: #FFC73C;
+    transition: color 0.3s ease; 
+}
+
+#footer {
+    background-color: #00cfff;
+    padding: 20px 0;
+    color: white;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+  }
+  
+  .footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .footer-left h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-left p {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: 700px;
+  }
+  
+  .footer-left .detiktravel {
+    font-style: italic;
+    font-size: 20px;
+  }
+  
+  .footer-right {
+    text-align: center;
+  }
+  
+  .footer-right p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .socials {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .socials li {
+    display: inline;
+  }
+  
+  .socials li a {
+    color: white;
+    font-size: 20px;
+    transition: color 0.3s;
+  }
+  
+  .socials li a:hover {
+    color: #ffcc00; /* Hover color */
+  }
+  
+  .footer-divider {
+    border: 1px solid white;
+    margin: 20px 0;
+  }
+  
+  .footer-bottom p {
+    font-size: 14px;
+    margin: 0;
+  }
+
+  .register{
+    height: 125svh;
+    background-image: linear-gradient(
+        to bottom, #00D1FF 1%, transparent 30%), url(image/img4.jpeg);
+    background-size: 1850px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-position: 10% 0px;
+  }
+
+  .box{
+    background-color:white;
+    height: 40rem;
+    width: 30rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  .jud{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  .jud h1{
+    margin-bottom: 0;
+  }
+
+  .box1{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 10rem;
+    width: auto;
+    gap: 0.1rem;
+  } 
+
+  label{
+    display: block;
+    font-family: "Roboto Slab";
+    padding: 5px 0;
+    font-size: 1.5rem;
+  }
+  
+  input {
+    width: auto;
+    padding: 1rem 1.8rem;
+    background: #FFFFFF;
+    position: relative;
+    border-radius: 10px;
+    border: none;
+    background-color: #F8F8F8;
+  }
+
+  .box2{
+    display: flex;
+    padding: 20px;
+    width: auto;
+    height: 7rem;
+  }
+  
+  .jwb{
+    background-color: #F8F8F8;
+    padding: 28px;
+    padding-top: 15px;
+    font-size: 0.8rem;
+    width: 30rem;
+    color: rgb(111, 110, 110);
+    border-radius: 10px;
+  }
+
+  .box3{
+    height: 10rem;
+    display: flex;
+
+  }
+
+  .foto2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #F8F8F8;
+    width: 10rem;
+    margin-left: 1.2rem;
+    border-radius: 10px;
+    height: 10rem;
+  }
+
+  .foto2 a{
+    position: relative;
+    font-size: 0.7rem;
+    color: black;
+    top:3rem;
+  }
+
+  .rule{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.7rem;
+    margin-top: 2.5rem;
+    color: black;
+  }
+
+  .upload-btn {
+    background-color: #00D1FF;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    line-height: 50px;
+    cursor: pointer;
+    line-height: 16px;
+}
+
+.form-group {
+   display:flex ;
+}
+
+.form-group a{
+    font-size: 0.6rem;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-size: 0.6rem;
+    color: black;
+    top:5px;
+    display: flex;
+    align-items: center;
+}
+
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.875rem;
+    color: #777;
+}
+
+.form-group .required {
+    color: red;
+}
+
+  
